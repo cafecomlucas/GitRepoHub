@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default () => <h1>Main</h1>;
+import { Title } from './styles';
+
+export default () => <Title>Main</Title>;

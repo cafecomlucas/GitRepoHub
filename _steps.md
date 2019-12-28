@@ -176,3 +176,21 @@ Modificamos o componente `App` para que ele importe o componente `Routes` com as
 Testes realizados no browser.
 
 ---
+
+## Instalando e utilizando Styled Components
+
+Adicionamos a biblioteca Styled Components. Ela serve para trabalhar com estilização escopada nos componentes do ReactJS (ou React Native), isso faz com que a estilização de um componente não interfira na estilização de outro. Além disso, essa biblioteca possui características semelhantes aos pré-processadores como o SASS/Less e é possível encadear CSS. Também conseguimos acessar as propriedades do componente estilizado, aplicar estilização condicional, dentre outros recursos.
+
+```
+yarn add styled-components
+```
+
+Para trabalhar em arquivos da Styled Components, também é necessário ter a biblioteca `vscode-styled-components` instalada para que o highlighting funcione.
+
+Em uma aplicação tradicional, normalmente os elementos HTML com um id ou classe são estilizados através de um único arquivo de CSS ou algo assim. Com o Styled Components cada CSS escopado pertence a um outro componente feito excluisvamente para armazenar a estilização. Quando um Styled Component é utilizado no lugar da tag HTML, ao ser renderizado o elemento e a estilização definidos no Styled Component são aplicados.
+
+Criamos o arquivo `styles.js` dentro da pasta `Main`, que vai guardar cada Styled Component dessa página. Configuramos o Styled Component do título, definimos para utilizar a tag `h1` na renderização, além do CSS utilizando encadeamento e estilização condicional com base em uma propriedade do componente estilizado. Exportamos como o componente estilizado chamado `Title`.
+
+No arquivo `index.js` da pasta `Main` trocamos o `h1` por `Title` e a estilização foi aplicada.
+
+---
