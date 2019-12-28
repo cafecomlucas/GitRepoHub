@@ -224,3 +224,15 @@ Dentro do componente estilizado `Form` definimos um campo `input`. Também defin
 Com o Styled Components também é possível adicionar propriedades ao componente antes da exportação do arquivo de estilização. No componente estilizado `SubmitButton` definimos para que ele retorne com o atributo `type` preenchido com `submit`.
 
 ---
+
+## Main | Adicionando repositório e lista de repositórios ao estado da aplicação
+
+Para trabalhar com os dados modificamos o componente `Main` para ser um componente de classe para utilizarmos o estado. Também foi necessário adicionar uma configuração no `.eslintrc` para ignorar a propriedade `state` definida fora de construtor.
+
+Criamos o método `handleInputChange`, responsável por guardar a informação que o usuário digita na propriedade `newRepo`. Associamos o método ao campo `input` através da propriedade `onChange`. No campo `input` também definimos que o valor do campo é igual ao valor armazenado no estado (para refletir a alteração quando limparmos essa propriedade após adicionar o item na lista).
+
+Criamos o método `handleSubmit`, responsável por buscar a informação de `newRepo` no estado, buscar também a informação da lista `repositories`, unir as duas em uma lista só, atualizar o estado e limpar a propriedade `newRepo` (que ao ser limpa reflete a alteração no campo `input`). Por enquanto a lista `repositories` guarda apenas strings, e será modificada para guardar as informações que virão da API do GitHub.
+
+Utilizando o React Developer Tools verificamos as propriedades sendo alteradas.
+
+---
