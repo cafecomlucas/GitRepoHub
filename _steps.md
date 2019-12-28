@@ -150,3 +150,29 @@ A extensão EditorConfig do VSCode permite que o arquivo `.editorconfig` seja ge
 (Essa é apenas uma extensão pro editor, não é necessário instalar nenhum módulo do Node)
 
 ---
+
+## Configurando roteamento no Front-end através do React
+
+A configuração de rotas no cliente permite que o usuário navegue entre URLs diferentes sem precisar recarregar a página (característica de um SPA). Para trabalhar com essa funcionalidade, adicionamos o React Router DOM:
+
+```bash
+yarn add react-router-dom
+```
+
+Criamos a pasta `pages` com os componentes `Main/index.js` e `Repository/index.js`, que serão as paginas da aplicação a serem acessadas por rotas diferentes (`/` e `/repository`).
+
+Na pasta `src` criamos o arquivo `routes.js` e importamos componentes do React Router DOM, sendo eles:
+
+- `BrowserRouter`: container que permite navegar pela URL do browser
+- `Switch`: garante que apenas o conteúdo de uma única rota será exibido por vez
+- `Route`: indica o componente a ser exibido dependendo da rota acessada
+
+A estrutura foi criada para que o conteúdo do componente `Main` seja exibido ao acessar o caminho `/` e que o conteúdo do componente `Repository` seja exibido ao acessar o caminho `/repository`.
+
+Ao acessar o caminho `/repository` o componente `Main` apareceu pois o `Route` verifica apenas o começo da string do path (`/`) e para que isso não ocorra adicionamos a propriedade `exact` no `Route` com o path="/".
+
+Modificamos o componente `App` para que ele importe o componente `Routes` com as rotas configuradas.
+
+Testes realizados no browser.
+
+---
