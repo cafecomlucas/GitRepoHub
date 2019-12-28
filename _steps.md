@@ -194,3 +194,11 @@ Criamos o arquivo `styles.js` dentro da pasta `Main`, que vai guardar cada Style
 No arquivo `index.js` da pasta `Main` trocamos o `h1` por `Title` e a estilização foi aplicada.
 
 ---
+
+## Criação da estilização global no Styled Components
+
+Criamos o arquivo `src/styles/global.js`, onde definimos a estilização global da aplicação através do componente `createGlobalStyle` do Styled Components. Nesse arquivo definimos alguns padrões como remoção de espaços, fontes e cores utilizadas.
+
+Importamos a estilização global no arquivo `src/App.js`. Como agora é preciso exportar dois componentes e no retorno da função só pode ter um, utilizamos o componente `Fragment` (<></>) do React para serivir de container para os componentes `Routes` e o `GlobalStyle`.
+
+---
