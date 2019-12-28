@@ -199,6 +199,28 @@ No arquivo `index.js` da pasta `Main` trocamos o `h1` por `Title` e a estilizaç
 
 Criamos o arquivo `src/styles/global.js`, onde definimos a estilização global da aplicação através do componente `createGlobalStyle` do Styled Components. Nesse arquivo definimos alguns padrões como remoção de espaços, fontes e cores utilizadas.
 
-Importamos a estilização global no arquivo `src/App.js`. Como agora é preciso exportar dois componentes e no retorno da função só pode ter um, utilizamos o componente `Fragment` (<></>) do React para serivir de container para os componentes `Routes` e o `GlobalStyle`.
+Importamos a estilização global no arquivo `src/App.js`. Como agora é preciso exportar dois componentes e no retorno da função só pode ter um, utilizamos o componente `Fragment` (<></>) do React para serivir de container para os componentes `Routes` e `GlobalStyle`.
+
+---
+
+## Estilizando página Main
+
+Antes de começar a estilizar a página Main, definimos como vamos utilizar alguns icones nessa aplicação. Nós podemos utilizar tanto imagens (png/svg) quanto ícones de fontes (optamos por essa).
+
+Instalamos o React Icons, que possui vários pacotes de fontes com ícones, como por exemplo: Font Awesome, Material Icons, Ionicons, dentre outros.
+
+```bash
+yarn add react-icons
+```
+
+Modificamos o componente `Main` para importar um componente estilizado chamado `Container` e dentro dele definimos um título `h1` com o ícone do pacote Font Awesome (o ícone é importado como um componente).
+
+Dentro do `Container` também adicionamos um componente estilizado pro formulário chamado `Form`, que terá outros elementos filho.
+
+Quando um elemento/componente possuir mais de dois níveis na estilização do CSS é interessante isolarmos ele em outro componente estilizado para entender melhor o código. No caso do `Form`, criamos esse componente pois ao utilizar o elemento `form` comum, o terceiro nível seria alcançado nos filhos dele a partir do componente `Container` (Container>Form>input).
+
+Dentro do componente estilizado `Form` definimos um campo `input`. Também definimos um botão como componente estilizado `SubmitButton`. Utilizamos um componente estilizado pro botão pois ele terá o CSS alterado com base em uma propriedade (`disabled`) - essa propriedade mudará de valor caso o usuário clique para buscar informações de um repositório.
+
+Com o Styled Components também é possível adicionar propriedades ao componente antes da exportação do arquivo de estilização. No componente estilizado `SubmitButton` definimos para que ele retorne com o atributo `type` preenchido com `submit`.
 
 ---
