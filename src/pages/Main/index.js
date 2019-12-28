@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { FaGithubAlt, FaPlus } from 'react-icons/fa';
 import { Container, Form, SubmitButton } from './styles';
 
+import api from '../../services/api';
+
 export default class Main extends Component {
   state = {
     newRepo: '',
@@ -14,10 +16,18 @@ export default class Main extends Component {
     this.setState({ newRepo });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const { newRepo, repositories } = this.state;
-    this.setState({ repositories: [...repositories, newRepo], newRepo: '' });
+
+    const { data } = await api.get(`/repos/${newRepo}`);
+    // mesmo com um item só os dados são guardados em um objeto
+    // para ficar mais fácil de adicionar novos itens caso necessário
+    const repository = {
+      name: data.full_name,
+    };
+
+    this.setState({ repositories: [...repositories, repository], newRepo: '' });
   };
 
   render() {

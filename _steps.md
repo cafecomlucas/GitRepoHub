@@ -231,8 +231,26 @@ Para trabalhar com os dados modificamos o componente `Main` para ser um componen
 
 Criamos o método `handleInputChange`, responsável por guardar a informação que o usuário digita na propriedade `newRepo`. Associamos o método ao campo `input` através da propriedade `onChange`. No campo `input` também definimos que o valor do campo é igual ao valor armazenado no estado (para refletir a alteração quando limparmos essa propriedade após adicionar o item na lista).
 
-Criamos o método `handleSubmit`, responsável por buscar a informação de `newRepo` no estado, buscar também a informação da lista `repositories`, unir as duas em uma lista só, atualizar o estado e limpar a propriedade `newRepo` (que ao ser limpa reflete a alteração no campo `input`). Por enquanto a lista `repositories` guarda apenas strings, e será modificada para guardar as informações que virão da API do GitHub.
+Criamos o método `handleSubmit`, responsável por buscar o dado de `newRepo` no estado, buscar também os dados da lista `repositories`, unir os dados em um novo Array, setar o novo estado com esse novo Array (conceito de imutabilidade) e limpar a propriedade `newRepo` (que ao ser limpa reflete a alteração no campo `input`). Por enquanto a lista `repositories` guarda apenas strings, e será modificada para guardar as informações que virão da API do GitHub.
 
-Utilizando o React Developer Tools verificamos as propriedades sendo alteradas.
+Utilizando o React Developer Tools verificamos o estado sendo alterado.
+
+---
+
+## Main | Instalando Axios e preenchendo propriedade do estado com dados da API
+
+Para buscar informações em uma API REST externa, poderíamos utilizar o `fetch` do próprio JavaScript, contudo, vamos utilizar uma biblioteca chamada `axios` para poder configurar algumas opções (como a URL base).
+
+```
+yarn add axios
+```
+
+Consultamos na documentação do GitHub como acessar este recurso através do método GET [https://developer.github.com/v3/repos/#get](https://developer.github.com/v3/repos/#get).
+
+Criamos o arquivo `services/api` com a configuração do Axios e definimos a URL Base (https://api.github.com/repos/).
+
+No componente `Main` importamos o arquivo `api` para fazer uma requisição GET quando o método `handleSubmit` é executado. Como a requisição é assíncrona, adicionamos async/await ao método. Após o retorno de todos os dados, criamos um novo objeto para guardar o dado `name` em um novo objeto (`repository`) e adicionamos ele na lista de objetos (`repositories`).
+
+Utilizando o React Developer Tools verificamos o estado sendo alterado.
 
 ---
