@@ -294,3 +294,21 @@ Para guardar a lista de repositórios localmente utilizamos a API localStorage d
 Setamos os métodos do ciclo de vida do React para regatar ou gravar os dados localmente. Utilizamos o método `componentDidUpdate` (quanto um item é adicionado) para guardar o estado da aplicação na lista local e utilizamos o `componentDidMount` (quando a página é recarregada) para resgatar os dados da lista local e atualizar o estado da aplicação.
 
 ---
+
+## Main | Configurando Links
+
+Para criar criar um link que vai para outra página sem recarregar o navegador temos duas possibilidades: utilizar o componente `Link` do React Router DOM ou através do JavaScript utilizando o `this.props.navigation`. Utilizamos a primeira opção. Para o navegador não recarregar não podemos utilizar a tag `<a>` do HTML diretamente.
+
+No componente `Main` importamos e incluímos o componente `Link`, informando na propriedade `to` a página `/repositories` mais o nome armazenado na propriedade do estado `repository`. Esse nome será recebido na página `/repository` como um parâmetro da URL (route params).
+
+## Repository | Configurando recebimento de parâmetro
+
+Como o nome do repositório é escrito `nome_usuario/nome_repositorio` com uma barra (`/`) no meio e pro React Router DOM isso significa um acesso a outra pasta/rota, foi necessário realizar o encode a barra ser interpretada como um caracter especial (resultando no código `%2F` aparecendo na barra de endereços ao invés da barra).
+
+No componente `src/routes.js`, definimos que o endereço `/repository` receberá um parâmetro na URL (ficando `/repository/:repository`, semelhante ao Node.js).
+
+A conversão anterior foi necessária pois ao acessar o endereço `repository/nome_usuario/nome_repositorio`, devido a configuração feita em `routes.js`, apenas o caminho entre as barras é considerado (`repository/_PARAMETRO_CONSIDERADO_/nome_repositorio`) para ser armazenado no parâmetro `:repository` (e por isso não podemos ter barras no parâmetro).
+
+No componente `Routes` buscamos o parâmetro `:repository`, que por estar codificado retorna a string completa. Decodificamos a string (pra barra voltar a aparecer) e exibimos o resultado no browser. O dado dessa string, que depende do endereço acessado, será utilizada para buscar os dados na API do GitHub.
+
+---
