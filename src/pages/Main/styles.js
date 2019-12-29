@@ -80,6 +80,9 @@ export const List = styled.ul`
     a {
       color: #7159c1;
       text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 `;

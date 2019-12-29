@@ -1,9 +1,11 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading } from './styles';
+import { Loading, Owner } from './styles';
 
 export default class Repository extends Component {
   state = {
@@ -46,13 +48,18 @@ export default class Repository extends Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { repository, loading } = this.state;
 
     if (loading) return <Loading>Carregando...</Loading>;
 
     return (
       <Container>
-        <h1>Repository</h1>
+        <Owner>
+          <Link to="/">Voltar aos repositórios</Link>
+          <img src={repository.owner.avatar_url} alt={repository.owner.login} />
+          <h1>{repository.name}</h1>
+          <p>{repository.description}</p>
+        </Owner>
       </Container>
     );
   }

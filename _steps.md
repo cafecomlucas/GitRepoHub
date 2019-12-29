@@ -342,3 +342,9 @@ Modificamos o componente `Main` para importar o componente estilizado `Container
 Modificamos o componente `Repository` para importar o componente estilizado `Container` e modificamos a estrutura do JSX dentro do método `render` para que todo o conteúdo fique dentro do `Container`.
 
 ---
+
+## Repository | Exibindo dados do repositório
+
+Modificamos o componente `Repository` para exibir alguns dos dados de `repository` retornados pela API do GitHub. Criamos a estrutura e a estilização no novo componente estilizado `Owner`. Também adicionamos um link para voltar para a tela de repositórios.
+
+---
