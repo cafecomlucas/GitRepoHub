@@ -44,7 +44,10 @@ export const Form = styled.form`
   }
 `;
 
-export const SubmitButton = styled.button.attrs({ type: 'submit' })`
+export const SubmitButton = styled.button.attrs(props => ({
+  type: 'submit',
+  disabled: props['loading-data'],
+}))`
   background: #7159c1;
   border: 0;
   padding: 15px;
@@ -53,6 +56,12 @@ export const SubmitButton = styled.button.attrs({ type: 'submit' })`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &[disabled] {
+    cursor: not-allowed;
+    background: #a7a7a7;
+    opacity: 0.6;
+  }
 
   @media screen and (max-width: 480px) {
     margin: 10px 0 0 0;

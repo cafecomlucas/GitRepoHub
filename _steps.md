@@ -254,3 +254,9 @@ No componente `Main` importamos o arquivo `api` para fazer uma requisição GET 
 Utilizando o React Developer Tools verificamos o estado sendo alterado.
 
 ---
+
+## Main | Estiliza botão de envio até a conclusão da chamada a API
+
+Para que o usuário não envie o dado do campo de texto várias vezes seguidas foi necessário desabilitar o botão de envio temporáriamente. Adicionamos a propriedade `loading` ao estado, setamos ela como `true` antes de fazer a requisição a API e depois da requisição setamos como `false`. No componente `Button` passamos o dado `loading` na propriedade `loading-data` (só `loading` dava erro no console) e no Styled Component (dentro de `Main/styles.js`) setamos o botão como `disabled` de acordo com o valor de `loading-data`. Definimos também uma estilização de botão apagado quando o `disabled` é verdadeiro.
+
+---
