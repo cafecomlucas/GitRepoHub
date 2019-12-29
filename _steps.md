@@ -286,3 +286,11 @@ Para dar tempo de ver o botão carregando alteramos a conexão paga 3G na aba Ne
 Estilizamos um elemento ul exportado como `List` do Styled Component. No componente `Main` importamos o componente `List`, dentro dele percorremos a propriedade `repositories` do estado e criamos um elemento li por repositório com o nome e um link para acessar os detalhes (por enquanto está fake).
 
 ---
+
+## Main | Salvando lista de repositórios localmente utilizando localStorage
+
+Para guardar a lista de repositórios localmente utilizamos a API localStorage do browser, assim não perdemos os dados ao recarregar a página.
+
+Setamos os métodos do ciclo de vida do React para regatar ou gravar os dados localmente. Utilizamos o método `componentDidUpdate` (quanto um item é adicionado) para guardar o estado da aplicação na lista local e utilizamos o `componentDidMount` (quando a página é recarregada) para resgatar os dados da lista local e atualizar o estado da aplicação.
+
+---

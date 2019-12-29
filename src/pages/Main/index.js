@@ -12,6 +12,18 @@ export default class Main extends Component {
     loading: false,
   };
 
+  componentDidMount() {
+    const repositories = JSON.parse(localStorage.getItem('repositories'));
+
+    if (repositories) this.setState({ repositories });
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { repositories } = this.state;
+    if (repositories !== prevState.repositories)
+      localStorage.setItem('repositories', JSON.stringify(repositories));
+  }
+
   handleInputChange = e => {
     const newRepo = e.target.value;
     this.setState({ newRepo });
@@ -40,7 +52,7 @@ export default class Main extends Component {
     };
 
     this.setState({
-      repositories: [...repositories, repository],
+      repositories: [repository, ...repositories],
       newRepo: '',
       loading: false,
     });
@@ -74,7 +86,7 @@ export default class Main extends Component {
           {repositories.map(repository => (
             <li key={repository.name}>
               <span>{repository.name}</span>
-              <a href="javascript:void(0);">Detalhes</a>
+              <a href="/">Detalhes</a>
             </li>
           ))}
         </List>
