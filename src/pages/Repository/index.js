@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
 import api from '../../services/api';
+
+import Container from '../../components/Container';
 import { Loading } from './styles';
 
 export default class Repository extends Component {
@@ -48,6 +50,10 @@ export default class Repository extends Component {
 
     if (loading) return <Loading>Carregando...</Loading>;
 
-    return <h1>Repository</h1>;
+    return (
+      <Container>
+        <h1>Repository</h1>
+      </Container>
+    );
   }
 }

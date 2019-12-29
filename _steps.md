@@ -328,3 +328,17 @@ Na requisição pelas `issues`, utilizamos alguns filtros informando os Query Pa
 Criamos o Styled Component `Loading` para ser exibido enquanto os dados da API não chegam. No componente `Repository` importamos e verificamos se a propriedade `loading` do estado é `true` antes de exibir o componente estilizado `Loading`.
 
 ---
+
+## Estilização | Reaproveitando CSS do componente estilizado Container
+
+Os Styled Components que não possuem nenhuma lógica dentro deles podem ser reaproveitados em mais de um lugar.
+
+Recortamos o `Container` do arquivo `src/Main/styles.js` e adicionamos em um novo arquivo `src/components/Container/index.js`. É uma boa prática sempre criar uma pasta por componente e um arquivo `index.js`, assim, fica melhor para adicionar novos arquivos referente aquele componente (como `styles.js`) caso necessário.
+
+Como o componente estilizado `Container` agora é o único no arquivo modificamos também o tipo de exportação para que ele seja exportado como padrão (`export default`). Assim também não precisamos utilizar desestruturação na importação.
+
+Modificamos o componente `Main` para importar o componente estilizado `Container` sem utilizar a desestruturação.
+
+Modificamos o componente `Repository` para importar o componente estilizado `Container` e modificamos a estrutura do JSX dentro do método `render` para que todo o conteúdo fique dentro do `Container`.
+
+---
