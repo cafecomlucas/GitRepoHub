@@ -255,8 +255,28 @@ Utilizando o React Developer Tools verificamos o estado sendo alterado.
 
 ---
 
-## Main | Estiliza botão de envio até a conclusão da chamada a API
+## Main | Bloqueando botão de envio até a conclusão da chamada a API
 
 Para que o usuário não envie o dado do campo de texto várias vezes seguidas foi necessário desabilitar o botão de envio temporáriamente. Adicionamos a propriedade `loading` ao estado, setamos ela como `true` antes de fazer a requisição a API e depois da requisição setamos como `false`. No componente `Button` passamos o dado `loading` na propriedade `loading-data` (só `loading` dava erro no console) e no Styled Component (dentro de `Main/styles.js`) setamos o botão como `disabled` de acordo com o valor de `loading-data`. Definimos também uma estilização de botão apagado quando o `disabled` é verdadeiro.
+
+---
+
+Devido ao grande número de requisições para a API do GitHub foi necessário configurar o acesso através de um client_id e do secret_id informados na URL no momento da requisição. Dados disponíveis em: [https://github.com/settings/developers](https://github.com/settings/developers)
+
+---
+
+## Main | Exibindo e animando ícone de carregamento até conclusão da chamada a API
+
+Importamos o componente `FaSpinner` que retorna o ícone de carregamento. Utilizamos um _condicional rendering_ através da propriedade `loading` do estado: caso o dado seja `true` só o `FaSpinner` aparece, caso o dado seja `false` só o `FaPlus` aparece.
+
+Para fazer o spinner girar utilizamos os componentes `keyframes` e o `css` do Styled Components.
+
+Fora da estilização do button, o `keyframes` foi utilizado para criar a animação semelhante ao que faríamos no CSS, contudo, guardamos em uma constante chamada `rotate`.
+
+O componente `css` permite retornar um pedaço de CSS dentro de uma expressão JavaScript. Dentro da estilização do button, abrimos uma expressão e criamos uma condicional para adicionar um pedaço de CSS. Se o `loading-data` for `true` o código com o `animate` e a constante `rotate` dentro dele é executado.
+
+(Também dava pra ser feito colocando o `svg{animate...}` dentro do `&[disabled]`)
+
+Para dar tempo de ver o botão carregando alteramos a conexão paga 3G na aba Network do Chrome.
 
 ---

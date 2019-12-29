@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div`
   max-width: 700px;
@@ -44,6 +44,15 @@ export const Form = styled.form`
   }
 `;
 
+const rotate = keyframes`
+  to {
+    transform: rotate(0deg)
+  }
+  from {
+    transform: rotate(360deg)
+  }
+`;
+
 export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
   disabled: props['loading-data'],
@@ -62,6 +71,14 @@ export const SubmitButton = styled.button.attrs(props => ({
     background: #a7a7a7;
     opacity: 0.6;
   }
+
+  ${props =>
+    props['loading-data'] && // (funciona como um if sem else)
+    css`
+      svg {
+        animation: ${rotate} 1s linear infinite;
+      }
+    `}
 
   @media screen and (max-width: 480px) {
     margin: 10px 0 0 0;
