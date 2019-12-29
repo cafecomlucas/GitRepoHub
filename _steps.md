@@ -280,3 +280,9 @@ O componente `css` permite retornar um pedaço de CSS dentro de uma expressão J
 Para dar tempo de ver o botão carregando alteramos a conexão paga 3G na aba Network do Chrome.
 
 ---
+
+## Main | Listando repositórios
+
+Estilizamos um elemento ul exportado como `List` do Styled Component. No componente `Main` importamos o componente `List`, dentro dele percorremos a propriedade `repositories` do estado e criamos um elemento li por repositório com o nome e um link para acessar os detalhes (por enquanto está fake).
+
+---

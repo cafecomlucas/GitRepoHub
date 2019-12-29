@@ -85,3 +85,26 @@ export const SubmitButton = styled.button.attrs(props => ({
     flex: 1;
   }
 `;
+
+export const List = styled.ul`
+  list-style: none;
+  padding-top: 20px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+
+    & + li {
+      /** aplica em todas lis, menos na primeira */
+      /** (aplica em todas lis que tem uma li irmã antes delas) */
+      border-top: 1px solid #b7b7b7;
+    }
+
+    a {
+      color: #7159c1;
+      text-decoration: none;
+    }
+  }
+`;
