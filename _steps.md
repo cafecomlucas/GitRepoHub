@@ -322,3 +322,9 @@ Utilizamos o método do ciclo de vida `componentDidMount` (com `async`) para faz
 Na requisição pelas `issues`, utilizamos alguns filtros informando os Query Params (`/?state=&per_page=`) pro axios através da propriedade `params`. São retornadas apenas 5 issues abertas.
 
 ---
+
+## Repository | Exibindo tela de carragamento até o retorno da API
+
+Criamos o Styled Component `Loading` para ser exibido enquanto os dados da API não chegam. No componente `Repository` importamos e verificamos se a propriedade `loading` do estado é `true` antes de exibir o componente estilizado `Loading`.
+
+---
