@@ -312,3 +312,13 @@ A conversão anterior foi necessária pois ao acessar o endereço `repository/no
 No componente `Routes` buscamos o parâmetro `:repository`, que por estar codificado retorna a string completa. Decodificamos a string (pra barra voltar a aparecer) e exibimos o resultado no browser. O dado dessa string, que depende do endereço acessado, será utilizada para buscar os dados na API do GitHub.
 
 ---
+
+## Repository | Buscando dados na API do GitHub com base no parâmetro da URL
+
+Como a rota `/repository` exibirá os dados buscados, foi necessário transformar o componente de função em um componente de classe para utilização do estado.
+
+Utilizamos o método do ciclo de vida `componentDidMount` (com `async`) para fazer a chamada pra API do GitHub assim que o usuário entra na página. Nele utilizamos o método `Promisse.all` para que as requisições sejam feitas em paralelo (ao invés de uma após a outra). Desestruturamos o Array retornado e exibimos os resultados no console.
+
+Na requisição pelas `issues`, utilizamos alguns filtros informando os Query Params (`/?state=&per_page=`) pro axios através da propriedade `params`. São retornadas apenas 5 issues abertas.
+
+---
