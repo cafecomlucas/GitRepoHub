@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import api from '../../services/api';
 
@@ -8,6 +9,15 @@ import Container from '../../components/Container';
 import { Loading, Owner, IssueList } from './styles';
 
 export default class Repository extends Component {
+  static propTypes = {
+    match: PropTypes.shape({
+      // shape é utilizado para objetos
+      params: PropTypes.shape({
+        repository: PropTypes.string,
+      }),
+    }).isRequired, // funciona para todas propriedades dentro do shape
+  };
+
   state = {
     repository: [],
     issues: [],
@@ -64,7 +74,11 @@ export default class Repository extends Component {
               <img src={issue.user.avatar_url} alt={issue.user.login} />
               <div>
                 <strong>
-                  <a href={issue.html_url} target="_blank">
+                  <a
+                    href={issue.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {issue.title}
                   </a>
                   {issue.labels.map(label => (

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -33,6 +34,8 @@ export default class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+    const client_id = '61dc96b8c51a5d2b9e0b';
+    const client_secret = 'e812178db64b10903ee5f6572cf952efbb1730f2';
     const { loading } = this.state;
     // se estiver carregando um repositório
     if (loading) {
@@ -44,9 +47,12 @@ export default class Main extends Component {
 
     const { newRepo, repositories } = this.state;
 
-    const { data } = await api.get(
-      `/repos/${newRepo}?client_id=61dc96b8c51a5d2b9e0b&client_secret=e812178db64b10903ee5f6572cf952efbb1730f2`
-    );
+    const { data } = await api.get(`/repos/${newRepo}`, {
+      params: {
+        client_id,
+        client_secret,
+      },
+    });
     // mesmo com um item só, os dados são guardados em um objeto
     // para ficar mais fácil de adicionar novos itens caso necessário
     const repository = {

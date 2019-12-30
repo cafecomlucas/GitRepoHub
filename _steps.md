@@ -360,3 +360,19 @@ Modificamos o componente `Repository` para exibir alguns os dados de `issues` re
 Modificamos o componente `Repository` para exibir as labels de cada issue listada. Modificamos a estrutura e o CSS no componente estilizado `IssueList`.
 
 ---
+
+## Validação das propriedades do componente com o módulo prop-types
+
+É necessário validar todas as propriedades de um componente (mesmo aquelas preenchidas de maneira automática). No componente `Repository`, precisamos validar a proprieade `match` (que é preenchida automaticamente pelo React Router DOM).
+
+Para fazer a validação, instalamos o módulo `prop-types`:
+
+```bash
+yarn add prop-types
+```
+
+No componente `Repository` importamos o `prop-types`, criamos a variável estática `propTypes` dentro da classe e realizamos as devidas validações na propriedade `match` do componente.
+
+Também foi necessário indicar pro ESLint ignorar a declaração da variável estática dentro da classe.
+
+---
