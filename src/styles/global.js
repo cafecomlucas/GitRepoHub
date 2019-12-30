@@ -13,7 +13,7 @@ export default createGlobalStyle`
   }
 
   #root{
-    margin:20px;
+    margin:10px;
   }
 
   body{

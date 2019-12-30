@@ -354,3 +354,9 @@ Modificamos o componente `Repository` para exibir alguns dos dados de `repositor
 Modificamos o componente `Repository` para exibir alguns os dados de `issues` retornados pela API do GitHub. Criamos a estrutura e a estilização no novo componente estilizado `IssueList`.
 
 ---
+
+## Repository | Exibindo labels de cada issue do repositório
+
+Modificamos o componente `Repository` para exibir as labels de cada issue listada. Modificamos a estrutura e o CSS no componente estilizado `IssueList`.
+
+---

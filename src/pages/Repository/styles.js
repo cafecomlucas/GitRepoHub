@@ -7,7 +7,7 @@ export const Loading = styled.div`
   font-size: 30px;
   font-weight: bold;
   color: #fff;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 20px);
 `;
 
 export const Owner = styled.header`
@@ -57,7 +57,7 @@ export const IssueList = styled.ul`
   }
   li {
     display: flex;
-    align-items: center;
+
     padding: 15px 10px;
     border: 1px solid #b7b7b7;
     border-radius: 4px;
@@ -83,10 +83,21 @@ export const IssueList = styled.ul`
         a {
           color: #333;
           text-decoration: none;
+          margin-right: 10px;
           &:hover {
             color: #7159c1;
             text-decoration: underline;
           }
+        }
+        span {
+          padding: 5px;
+          background: #eee;
+          border-radius: 4px;
+          font-size: 12px;
+          line-height: 15px;
+          font-weight: 600;
+          margin: 0 5px 5px 0;
+          display: inline-block;
         }
       }
     }
