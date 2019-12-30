@@ -376,3 +376,13 @@ No componente `Repository` importamos o `prop-types`, criamos a variável estát
 Também foi necessário indicar pro ESLint ignorar a declaração da variável estática dentro da classe.
 
 ---
+
+## Main | Alterando estilização em caso de erro
+
+Um `try/catch` adicionado ao método `handleSubmit` do componente `Main` para capturar possíveis erros.
+
+A propriedade `error` foi criada no estado e é setada para `true` toda vez que um erro é disparado.
+
+Styled Component `Form` alterado para modificar a estilização do campo onde o repositório é digitado com base na propriedade `error`. Quando um erro é disparado o campo de texto treme e fica com a borda vermelha.
+
+---

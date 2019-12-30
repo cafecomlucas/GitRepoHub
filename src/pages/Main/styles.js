@@ -1,5 +1,13 @@
 import styled, { keyframes, css } from 'styled-components';
 
+const error = keyframes`
+  from{left:-7px}
+  25%{left:10px}
+  50%{left:-5px}
+  75%{left:5px}
+  to{left:0px}
+`;
+
 export const Form = styled.form`
   margin-top: 30px;
   display: flex;
@@ -9,6 +17,17 @@ export const Form = styled.form`
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
+
+    ${props =>
+      props.error &&
+      css`
+        position: relative;
+        top: 0;
+        left: 0;
+        border-color: red;
+        animation: ${error} 300ms ease-out;
+        margin-left: 0;
+      `}
   }
   @media screen and (max-width: 480px) {
     flex-wrap: wrap;

@@ -13,6 +13,7 @@ export default class Main extends Component {
     newRepo: '',
     repositories: [],
     loading: false,
+    error: false,
   };
 
   componentDidMount() {
@@ -34,8 +35,6 @@ export default class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const client_id = '61dc96b8c51a5d2b9e0b';
-    const client_secret = 'e812178db64b10903ee5f6572cf952efbb1730f2';
     const { loading } = this.state;
     // se estiver carregando um repositório
     if (loading) {
@@ -43,31 +42,41 @@ export default class Main extends Component {
       return;
     }
 
-    this.setState({ loading: true });
+    this.setState({ loading: true, error: false });
 
-    const { newRepo, repositories } = this.state;
+    try {
+      const client_id = '61dc96b8c51a5d2b9e0b';
+      const client_secret = 'e812178db64b10903ee5f6572cf952efbb1730f2';
+      const { newRepo, repositories } = this.state;
 
-    const { data } = await api.get(`/repos/${newRepo}`, {
-      params: {
-        client_id,
-        client_secret,
-      },
-    });
-    // mesmo com um item só, os dados são guardados em um objeto
-    // para ficar mais fácil de adicionar novos itens caso necessário
-    const repository = {
-      name: data.full_name,
-    };
+      const { data } = await api.get(`/repos/${newRepo}`, {
+        params: {
+          client_id,
+          client_secret,
+        },
+      });
 
-    this.setState({
-      repositories: [repository, ...repositories],
-      newRepo: '',
-      loading: false,
-    });
+      // mesmo com um item só, os dados são guardados em um objeto
+      // para ficar mais fácil de adicionar novos itens caso necessário
+      const repository = {
+        name: data.full_name,
+      };
+
+      this.setState({
+        repositories: [repository, ...repositories],
+        newRepo: '',
+        loading: false,
+      });
+    } catch (err) {
+      this.setState({
+        loading: false,
+        error: true,
+      });
+    }
   };
 
   render() {
-    const { newRepo, repositories, loading } = this.state;
+    const { newRepo, repositories, loading, error } = this.state;
     return (
       <Container>
         <h1>
@@ -75,7 +84,7 @@ export default class Main extends Component {
           Repositórios
         </h1>
 
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} error={error}>
           <input
             type="text"
             placeholder="Adicionar repositório"
