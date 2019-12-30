@@ -1,11 +1,13 @@
 import styled, { keyframes, css } from 'styled-components';
 
 const error = keyframes`
-  from{left:-7px}
-  25%{left:10px}
-  50%{left:-5px}
-  75%{left:5px}
-  to{left:0px}
+  from{left:-10px;border-color:red;box-shadow: 0 0 0 red;}
+  12.5%{left:10px}
+  25%{left:-5px;box-shadow: 0 0 5px red;}
+  37.5%{left:5px;}
+  50%{left:0;border-color:red;}
+  90%{box-shadow: 0 0 0 red;}
+  to{border-color:#b7b7b7;box-shadow: 0 0 0 red;}
 `;
 
 export const Form = styled.form`
@@ -17,15 +19,13 @@ export const Form = styled.form`
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
-
     ${props =>
       props.error &&
       css`
         position: relative;
         top: 0;
         left: 0;
-        border-color: red;
-        animation: ${error} 300ms ease-out;
+        animation: ${error} 500ms ease-out;
         margin-left: 0;
       `}
   }

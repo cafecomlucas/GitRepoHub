@@ -386,3 +386,15 @@ A propriedade `error` foi criada no estado e é setada para `true` toda vez que 
 Styled Component `Form` alterado para modificar a estilização do campo onde o repositório é digitado com base na propriedade `error`. Quando um erro é disparado o campo de texto treme e fica com a borda vermelha.
 
 ---
+
+## Main | Validando se o repositório já existe na lista de repositórios
+
+Método `filter` utilizado para verificar se um repositório já existe antes de fazer buscar na API.
+
+Caso o repositório já exista, disparamos um erro (caindo no catch criado anteriormente).
+
+O campo não estava tremendo no caso de um erro após o outro (pois já estava estilizado), por isso, dentro do `catch`, foi necessário setar a propriedade do estado `error` para `false` antes de setar para `true` após 1 milisegundo (`setTimeout` utilizado) pro CSS retirar e colocar a estilização novamente.
+
+Animação CSS de erro atualizada.
+
+---

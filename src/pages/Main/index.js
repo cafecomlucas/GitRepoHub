@@ -49,6 +49,14 @@ export default class Main extends Component {
       const client_secret = 'e812178db64b10903ee5f6572cf952efbb1730f2';
       const { newRepo, repositories } = this.state;
 
+      const repositoryExists = repositories.filter(
+        repository => newRepo === repository.name
+      );
+
+      if (repositoryExists.length) {
+        throw new Error('Repositório duplicado');
+      }
+
       const { data } = await api.get(`/repos/${newRepo}`, {
         params: {
           client_id,
@@ -68,9 +76,11 @@ export default class Main extends Component {
         loading: false,
       });
     } catch (err) {
+      this.setState({ error: false }, () =>
+        setTimeout(() => this.setState({ error: true }), 1)
+      );
       this.setState({
         loading: false,
-        error: true,
       });
     }
   };
