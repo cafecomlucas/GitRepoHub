@@ -348,3 +348,9 @@ Modificamos o componente `Repository` para importar o componente estilizado `Con
 Modificamos o componente `Repository` para exibir alguns dos dados de `repository` retornados pela API do GitHub. Criamos a estrutura e a estilização no novo componente estilizado `Owner`. Também adicionamos um link para voltar para a tela de repositórios.
 
 ---
+
+## Repository | Exibindo Issues do repositório
+
+Modificamos o componente `Repository` para exibir alguns os dados de `issues` retornados pela API do GitHub. Criamos a estrutura e a estilização no novo componente estilizado `IssueList`.
+
+---

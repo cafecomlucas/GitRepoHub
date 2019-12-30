@@ -20,7 +20,7 @@ export const Owner = styled.header`
     border-radius: 50%;
   }
   h1 {
-    font-size: 24px;
+    font-size: 28px;
     margin-top: 10px;
   }
   p {
@@ -41,6 +41,54 @@ export const Owner = styled.header`
     min-width: 100%;
     &:hover {
       text-decoration: underline;
+    }
+  }
+`;
+
+export const IssueList = styled.ul`
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #b7b7b7;
+  h2 {
+    font-size: 18px;
+    margin: 0 0 30px 0;
+    color: #777;
+    text-align: center;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    & + li {
+      margin-top: 20px;
+    }
+    img {
+      max-width: 48px;
+      max-height: 48px;
+      border: 4px solid #b7b7b7;
+      border-radius: 50%;
+    }
+    div {
+      flex: 1; /** para não passar da borda em telas muito pequenas (ativa o shrink 1) */
+      margin-left: 15px;
+      p {
+        margin-top: 5px;
+        font-size: 12px;
+        color: #999;
+      }
+      strong {
+        font-size: 16px;
+        a {
+          color: #333;
+          text-decoration: none;
+          &:hover {
+            color: #7159c1;
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 `;

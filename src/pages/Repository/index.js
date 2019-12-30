@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner } from './styles';
+import { Loading, Owner, IssueList } from './styles';
 
 export default class Repository extends Component {
   state = {
@@ -19,7 +19,6 @@ export default class Repository extends Component {
     const client_secret = 'e812178db64b10903ee5f6572cf952efbb1730f2';
     const { match } = this.props;
     const repoName = decodeURIComponent(match.params.repository);
-    console.log(repoName);
 
     const [repository, issues] = await Promise.all([
       api.get(`/repos/${repoName}`, {
@@ -43,12 +42,10 @@ export default class Repository extends Component {
       issues: issues.data,
       loading: false,
     });
-
-    console.log(this.state);
   }
 
   render() {
-    const { repository, loading } = this.state;
+    const { repository, issues, loading } = this.state;
 
     if (loading) return <Loading>Carregando...</Loading>;
 
@@ -60,6 +57,23 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
+        <IssueList>
+          <h2>Issues</h2>
+          {issues.map(issue => (
+            <li key={String(issue.id)}>
+              <img src={issue.user.avatar_url} alt={issue.user.login} />
+              <div>
+                <strong>
+                  <a href={issue.html_url} target="_blank">
+                    {issue.title}
+                  </a>
+                  {/** LABELS */}
+                </strong>
+                <p>{issue.user.login}</p>
+              </div>
+            </li>
+          ))}
+        </IssueList>
       </Container>
     );
   }
