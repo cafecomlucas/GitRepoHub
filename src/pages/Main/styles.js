@@ -68,6 +68,7 @@ export const List = styled.ul`
   li {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     padding: 15px 0;
 
@@ -80,8 +81,13 @@ export const List = styled.ul`
     a {
       color: #7159c1;
       text-decoration: none;
+      text-align: right;
       &:hover {
         text-decoration: underline;
+      }
+      @media screen and (max-width: 480px) {
+        flex: 1;
+        padding: 6px;
       }
     }
   }
