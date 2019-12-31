@@ -33,7 +33,7 @@ yarn
 4. Inicie a aplicação web:
 
 ```bash
-yarn start
+yarn dev
 ```
 
 ---
