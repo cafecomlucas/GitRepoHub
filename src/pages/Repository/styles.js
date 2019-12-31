@@ -108,8 +108,9 @@ export const IssuePage = styled.div`
   justify-content: center;
   align-items: center;
   div {
-    margin: 0 40px;
+    min-width: 100px;
     font-size: 16px;
+    text-align: center;
     span {
       font-weight: bold;
     }
@@ -117,6 +118,7 @@ export const IssuePage = styled.div`
   button {
     font-size: 14px;
     width: 50px;
+    min-width: 50px;
     height: 50px;
     text-align: center;
     border-radius: 5px;

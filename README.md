@@ -2,7 +2,7 @@
 
 ### Aplicação
 
-Aplicação Front-End com ReactJS que consome API do GitHub. A aplicação adiciona, lista e exibe detalhes de cada repositório.
+Aplicação Front-End com ReactJS que consome API do GitHub. A aplicação adiciona, lista e exibe detalhes de cada repositório. Nos detalhes é possível ver as Issues organizadas por filtro e por página.
 
 Passo a passo documentado em: [https://github.com/cafecomlucas/rocketseat_desafio_05_reactjs_github_api/blob/master/\_steps.md](https://github.com/cafecomlucas/rocketseat_desafio_05_reactjs_github_api/blob/master/_steps.md)
 
@@ -12,14 +12,33 @@ Passo a passo documentado em: [https://github.com/cafecomlucas/rocketseat_desafi
 
 ### Como iniciar
 
-1. Clone este repositório usando: `git clone https://github.com/cafecomlucas/rocketseat_desafio_05_reactjs_github_api.git`
-2. Acesse o diretório criado: `cd rocketseat_desafio_05_reactjs_github_api`<br />
-3. Rode `yarn` para instalar as dependencias<br />
-4. Rode `yarn start` para iniciar a aplicação web
+1. Clone este repositório usando:
+
+```bash
+git clone https://github.com/cafecomlucas/rocketseat_desafio_05_reactjs_github_api.git
+```
+
+2. Acesse o diretório criado:
+
+```bash
+cd rocketseat_desafio_05_reactjs_github_api
+```
+
+3. Instale as dependencias:
+
+```bash
+yarn
+```
+
+4. Inicie a aplicação web:
+
+```bash
+yarn start
+```
 
 ---
 
-### Funcionalidades implementadas
+### Funcionalidades da primeira versão
 
 Até o commit [14122e4...](https://github.com/cafecomlucas/rocketseat_desafio_05_reactjs_github_api/commit/14122e44ee39273f10cb04b54cb36adbe4e23b29) as seguintes funcionalidades foram desenvolvidas:
 
@@ -35,7 +54,7 @@ Até o commit [14122e4...](https://github.com/cafecomlucas/rocketseat_desafio_05
 
 ---
 
-### Funcionalidades do desafio
+### Funcionalidades adicionais (versão do desafio)
 
 Após o commit [14122e4...](https://github.com/cafecomlucas/rocketseat_desafio_05_reactjs_github_api/commit/14122e44ee39273f10cb04b54cb36adbe4e23b29) as seguintes funcionalidades foram adicionadas:
 
