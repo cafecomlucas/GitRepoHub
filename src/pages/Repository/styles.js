@@ -45,8 +45,8 @@ export const Owner = styled.header`
   }
 `;
 
-export const IssueList = styled.ul`
-  margin-top: 30px;
+export const IssueFilter = styled.ul`
+  margin: 30px 0 30px 0;
   padding-top: 30px;
   border-top: 1px solid #b7b7b7;
   h2 {
@@ -55,6 +55,39 @@ export const IssueList = styled.ul`
     color: #777;
     text-align: center;
   }
+  div {
+    display: flex;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    overflow: hidden;
+
+    button {
+      font-size: 12px;
+      font-weight: bold;
+      padding: 7px;
+      flex: 1;
+      border: 0;
+      background: #eaeaea;
+      & + button {
+        border-left: 1px solid #b7b7b7;
+      }
+      &.active {
+        font-weight: normal;
+        color: #eaeaea;
+        background: #333;
+      }
+    }
+  }
+`;
+
+export const LoadingIssues = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+`;
+
+export const IssueList = styled.ul`
   li {
     display: flex;
 

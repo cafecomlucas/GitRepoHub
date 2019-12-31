@@ -398,3 +398,29 @@ O campo não estava tremendo no caso de um erro após o outro (pois já estava e
 Animação CSS de erro atualizada.
 
 ---
+
+## Repository | Filtragem das Issues
+
+### Buscando as Issues pelo filtro
+
+O componente estilizado `IssueFilter` foi criado para exibir as Issues de acordo com o dado informado no filtro. Para guardar todos possíveis dados do filtro foi criada a propriedade do estado `repoStates` e para guardar qual o filtro atual também foi criada a propriedade do estado `repoState`.
+
+Na estrutura, para criar uma lista de botões, percorremos o `repoStates` com o método `map` e para cada item, verificamos se o nome de cada item percorrido é igual ao nome do filtro atual (`repoState`) para setar a classe `active` e também associamos cada botão com o método que faz a ativação do mesmo (`handlerFilter`).
+
+O método `handlerFilter` foi criado e utilizado para fazer uma nova requisição para busca das Issues com base no novo dado do filtro (`repoState`). Como essa requisição também era feita na abertura da página (`componentDidMount`), a requisição foi isolada dentro do método `getIssues`. Dessa maneira, tanto o `componentDidMount`, quanto o `handleFilter` utilizam o método `getIssues` para buscar as Issues de acordo com o filtro informado (`repoState`). Ao final do método `handleFilter` as informações recebidas são guardadas no estado.
+
+O `componentDidMount` também foi modificado para não esperar as duas requisições (`repository` e `issues`) antes de continuar (`Promisse.all` removido), dessa maneira as informações do repositório podem aparecer assim que a busca por elas for concluída.
+
+Também foi criada a propriedade `repoName` no estado, que guarda qual é a página acessada via URL. Dessa maneira, esse dado pode ser utilizado tanto no `componentDidMount` quanto no método `getIssues`.
+
+### Loading do filtro
+
+O componente estilizado `LoadingIssues` foi criado para exibir o status de carregamento enquanto a busca por Issues é feita na API. Para guardar o status do carregamento foi criada a propriedade do estado `loadingFilter`.
+
+O método `handlerFilter` foi modificado. No início é verificado se não existe nennhuma requisição em andamento (`loadingFilter` com o valor `true`) e o fluxo só continua se a condição for falsa. Caso o fluxo continue, após o retorno da busca na API, setamos o valor de `loadingFilter` para `false`.
+
+### CSS
+
+A animação de rotação do spinner foi recortada para o arquivo `styles/global.js` para utilização em mais de um componente (no botão de envio no componente `Main` e na lista de Issues no componente `Repository`).
+
+---
