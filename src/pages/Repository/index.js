@@ -13,6 +13,8 @@ import {
   IssueList,
   IssueFilter,
   LoadingIssues,
+  IssuePage,
+  ContainerIssuesList,
 } from './styles';
 
 export default class Repository extends Component {
@@ -35,8 +37,9 @@ export default class Repository extends Component {
     loading: true,
     repoName: '',
     repoState: 'open',
-    repoStates: ['all', 'open', 'closed'],
+    repoStates: ['open', 'closed', 'all'],
     loadingFilter: false,
+    page: 1,
   };
 
   async componentDidMount() {
@@ -60,29 +63,36 @@ export default class Repository extends Component {
     });
   }
 
-  async getIssues(repoState) {
+  async getIssues(repoState, page) {
     const { repoName } = this.state;
     return api.get(`/repos/${repoName}/issues`, {
       params: {
         client_id: this.client_id,
         client_secret: this.client_secret,
         state: repoState,
-        per_page: 5,
+        per_page: 3,
+        page,
       },
     });
   }
 
-  async handleFilter(repoState) {
+  async handleFilter(repoState, page = 1) {
     const { loadingFilter } = this.state;
     if (loadingFilter) return;
 
     this.setState({ repoState, loadingFilter: true });
-    const issues = await this.getIssues(repoState);
+    const issues = await this.getIssues(repoState, page);
 
     this.setState({
       issues: issues.data,
       loadingFilter: false,
+      page,
     });
+  }
+
+  async handlePage(page) {
+    const { repoState } = this.state;
+    this.handleFilter(repoState, page);
   }
 
   render() {
@@ -93,6 +103,7 @@ export default class Repository extends Component {
       repoState,
       repoStates,
       loadingFilter,
+      page,
     } = this.state;
 
     if (loading) return <Loading>Carregando...</Loading>;
@@ -120,34 +131,60 @@ export default class Repository extends Component {
             ))}
           </div>
         </IssueFilter>
-        {loadingFilter ? (
-          <LoadingIssues>
-            <FaSpinner className="spinner" size={18} />
-          </LoadingIssues>
-        ) : (
-          <IssueList>
-            {issues.map(issue => (
-              <li key={String(issue.id)}>
-                <img src={issue.user.avatar_url} alt={issue.user.login} />
+        <ContainerIssuesList loadingFilter={loadingFilter}>
+          {loadingFilter ? (
+            <LoadingIssues>
+              <FaSpinner className="spinner" size={18} />
+            </LoadingIssues>
+          ) : (
+            <>
+              <IssuePage page={page}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.handlePage(page - 1);
+                  }}
+                  disabled={page === 1 ? 'disabled' : ''}
+                >
+                  {'<'}
+                </button>
                 <div>
-                  <strong>
-                    <a
-                      href={issue.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {issue.title}
-                    </a>
-                    {issue.labels.map(label => (
-                      <span key={String(label.id)}>{label.name}</span>
-                    ))}
-                  </strong>
-                  <p>{issue.user.login}</p>
+                  Página <span>{page}</span>
                 </div>
-              </li>
-            ))}
-          </IssueList>
-        )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    this.handlePage(page + 1);
+                  }}
+                >
+                  {'>'}
+                </button>
+              </IssuePage>
+              <IssueList>
+                {issues.map(issue => (
+                  <li key={String(issue.id)}>
+                    <img src={issue.user.avatar_url} alt={issue.user.login} />
+                    <div>
+                      <strong>
+                        <a
+                          href={issue.html_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {issue.title}
+                        </a>
+                        {issue.labels.map(label => (
+                          <span key={String(label.id)}>{label.name}</span>
+                        ))}
+                      </strong>
+                      <p>{issue.user.login}</p>
+                    </div>
+                  </li>
+                ))}
+              </IssueList>
+            </>
+          )}
+        </ContainerIssuesList>
       </Container>
     );
   }

@@ -424,3 +424,25 @@ O método `handlerFilter` foi modificado. No início é verificado se não exist
 A animação de rotação do spinner foi recortada para o arquivo `styles/global.js` para utilização em mais de um componente (no botão de envio no componente `Main` e na lista de Issues no componente `Repository`).
 
 ---
+
+## Repository | Adicionando paginação | Ajustando CSS
+
+### Paginação
+
+Propriedade de estado `page` criada para guardar o número da página atual.
+
+O componente `IssuePage` foi criado com os botões de navegação e a exibição do número da página atual. Cada um dos botões foi associado ao método `handlePage`.
+
+O método `handlePage` foi criado e definido para chamar o método `handleFilter`, passando como argumento o `repoState` guardado no estado e o número da página informada.
+
+Foi necessário modificar o método `handleFilter` adicionando o parâmetro opcional `page`, que, se não for preenchido (que é o caso quando clicamos nos botões de filtro) o valor padrão é `1`.
+
+Também alteramos o método `getIssues` (utilizada dentro do `handleFilter`) para também aceitar a página no argumento.
+
+Após a conclusão da busca na API, o número da página é atualizada no estado junto com a lista de Issues (que veio da API) e o status do carregamento (`false`).
+
+### CSS
+
+Ajustes feitos na estrutura e no CSS e componente estilizado `ContainerIssuesList` criado para adicionar um efeito de fade-in e fade-out ao buscar e receber os dados da API.
+
+---
