@@ -6,8 +6,7 @@ const rotate = keyframes`
   }
   from {
     transform: rotate(-360deg)
-  }
-`;
+  }`;
 
 export default createGlobalStyle`
   * {
@@ -17,20 +16,24 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body, #root{
+  html,
+  body,
+  #root {
     min-height: 100%;
   }
 
-  #root{
-    margin:10px;
+  #root {
+    margin: 10px;
   }
 
-  body{
+  body {
     background: #7159c1;
     -webkit-font-smoothing: antialiased !important;
   }
 
-  body, input, button{
+  body,
+  input,
+  button {
     color: #222;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;

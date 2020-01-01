@@ -144,7 +144,7 @@ export default class Repository extends Component {
                   onClick={() => {
                     this.handlePage(page - 1);
                   }}
-                  disabled={page === 1 ? 'disabled' : ''}
+                  disabled={page === 1}
                 >
                   {'<'}
                 </button>

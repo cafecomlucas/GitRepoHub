@@ -1,12 +1,12 @@
 /* eslint-disable camelcase */
 import React, { Component } from 'react';
+import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
+import api from '../../services/api';
+
 import Container from '../../components/Container';
 import { Form, SubmitButton, List } from './styles';
-
-import api from '../../services/api';
 
 export default class Main extends Component {
   state = {
@@ -49,11 +49,11 @@ export default class Main extends Component {
       const client_secret = 'e812178db64b10903ee5f6572cf952efbb1730f2';
       const { newRepo, repositories } = this.state;
 
-      const repositoryExists = repositories.filter(
+      const repositoryExists = repositories.find(
         repository => newRepo === repository.name
       );
 
-      if (repositoryExists.length) {
+      if (repositoryExists) {
         throw new Error('Repositório duplicado');
       }
 
@@ -79,6 +79,7 @@ export default class Main extends Component {
       this.setState({ error: false }, () =>
         setTimeout(() => this.setState({ error: true }), 1)
       );
+    } finally {
       this.setState({
         loading: false,
       });

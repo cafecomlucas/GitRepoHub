@@ -62,6 +62,7 @@ export const IssueFilter = styled.ul`
     overflow: hidden;
 
     button {
+      outline: 0;
       font-size: 12px;
       font-weight: bold;
       padding: 7px;
@@ -116,6 +117,7 @@ export const IssuePage = styled.div`
     }
   }
   button {
+    outline: 0;
     font-size: 14px;
     width: 50px;
     min-width: 50px;
