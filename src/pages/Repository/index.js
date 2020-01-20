@@ -7,6 +7,7 @@ import { FaSpinner } from 'react-icons/fa';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
+import CurrentRoute from '../../components/CurrentRoute';
 import {
   Loading,
   Owner,
@@ -105,87 +106,109 @@ export default class Repository extends Component {
       loadingFilter,
       page,
     } = this.state;
+    const { match } = this.props;
 
-    if (loading) return <Loading>Carregando...</Loading>;
+    if (loading)
+      return (
+        <>
+          <CurrentRoute>
+            <div>
+              <strong>Rota: </strong>/
+            </div>
+          </CurrentRoute>
+          <Loading>Carregando...</Loading>
+        </>
+      );
 
     return (
-      <Container>
-        <Owner>
-          <Link to="/">Voltar ao início</Link>
-          <img src={repository.owner.avatar_url} alt={repository.owner.login} />
-          <h1>{repository.name}</h1>
-          <p>{repository.description}</p>
-        </Owner>
-        <IssueFilter>
-          <h2>Issues</h2>
+      <>
+        <CurrentRoute>
           <div>
-            {repoStates.map(itemState => (
-              <button
-                className={itemState === repoState ? 'active' : ''}
-                type="button"
-                key={itemState}
-                onClick={() => this.handleFilter(itemState)}
-              >
-                {itemState}
-              </button>
-            ))}
+            <strong>Rota: </strong>/repository/
+            {match.params.repository}
           </div>
-        </IssueFilter>
-        <ContainerIssuesList loadingFilter={loadingFilter}>
-          {loadingFilter ? (
-            <LoadingIssues>
-              <FaSpinner className="spinner" size={18} />
-            </LoadingIssues>
-          ) : (
-            <>
-              <IssuePage page={page}>
+        </CurrentRoute>
+        <Container>
+          <Owner>
+            <Link to="/">Voltar ao início</Link>
+            <img
+              src={repository.owner.avatar_url}
+              alt={repository.owner.login}
+            />
+            <h1>{repository.name}</h1>
+            <p>{repository.description}</p>
+          </Owner>
+          <IssueFilter>
+            <h2>Issues</h2>
+            <div>
+              {repoStates.map(itemState => (
                 <button
+                  className={itemState === repoState ? 'active' : ''}
                   type="button"
-                  onClick={() => {
-                    this.handlePage(page - 1);
-                  }}
-                  disabled={page === 1}
+                  key={itemState}
+                  onClick={() => this.handleFilter(itemState)}
                 >
-                  {'<'}
+                  {itemState}
                 </button>
-                <div>
-                  Página <span>{page}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    this.handlePage(page + 1);
-                  }}
-                >
-                  {'>'}
-                </button>
-              </IssuePage>
-              <IssueList>
-                {issues.map(issue => (
-                  <li key={String(issue.id)}>
-                    <img src={issue.user.avatar_url} alt={issue.user.login} />
-                    <div>
-                      <strong>
-                        <a
-                          href={issue.html_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {issue.title}
-                        </a>
-                        {issue.labels.map(label => (
-                          <span key={String(label.id)}>{label.name}</span>
-                        ))}
-                      </strong>
-                      <p>{issue.user.login}</p>
-                    </div>
-                  </li>
-                ))}
-              </IssueList>
-            </>
-          )}
-        </ContainerIssuesList>
-      </Container>
+              ))}
+            </div>
+          </IssueFilter>
+          <ContainerIssuesList loadingFilter={loadingFilter}>
+            {loadingFilter ? (
+              <LoadingIssues>
+                <FaSpinner className="spinner" size={18} />
+              </LoadingIssues>
+            ) : (
+              <>
+                <IssuePage page={page}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      this.handlePage(page - 1);
+                    }}
+                    disabled={page === 1}
+                  >
+                    {'<'}
+                  </button>
+                  <div>
+                    Página <span>{page}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      this.handlePage(page + 1);
+                    }}
+                  >
+                    {'>'}
+                  </button>
+                </IssuePage>
+                <IssueList>
+                  {issues.map(issue => (
+                    <li key={String(issue.id)}>
+                      <img src={issue.user.avatar_url} alt={issue.user.login} />
+                      <div>
+                        <strong>
+                          <a
+                            href={issue.html_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {issue.title}
+                          </a>
+                          {issue.labels.map(label => (
+                            <span key={String(label.id)}>{label.name}</span>
+                          ))}
+                        </strong>
+                        <p>{issue.user.login}</p>
+                      </div>
+                    </li>
+                  ))}
+                </IssueList>
+              </>
+            )}
+          </ContainerIssuesList>
+        </Container>
+      </>
     );
   }
 }

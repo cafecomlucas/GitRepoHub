@@ -7,7 +7,7 @@ const Container = styled.div`
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   padding: 30px;
-  margin: 0 auto;
+  margin: 40px auto 0 auto;
   text-align: left;
 
   @media screen and (max-width: 480px) {

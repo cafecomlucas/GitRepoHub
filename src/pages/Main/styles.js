@@ -42,7 +42,7 @@ export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
   disabled: props['loading-data'],
 }))`
-  background: #3d9999;
+  background: #4d7999;
   border: 0;
   padding: 15px;
   margin-left: 10px;
@@ -59,14 +59,14 @@ export const SubmitButton = styled.button.attrs(props => ({
   }
 
   &:hover {
-    background: #32a69c;
-    box-shadow: 0 0 2px 1px #296166;
+    background: #5092b3;
+    box-shadow: 0 0 2px 1px #466380;
     svg {
       font-size: 16px;
     }
   }
   &:active {
-    background: #296166;
+    background: #466380;
     box-shadow: inset 0 0 2px 1px #fcfcfc;
     svg {
       font-size: 12px;
@@ -115,7 +115,7 @@ export const List = styled.ul`
     }
 
     a {
-      color: #3d9999;
+      color: #4d7999;
       text-decoration: none;
       text-align: right;
       &:hover {

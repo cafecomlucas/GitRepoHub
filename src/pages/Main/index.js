@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
+import CurrentRoute from '../../components/CurrentRoute';
 import { Form, SubmitButton, List } from './styles';
 
 export default class Main extends Component {
@@ -90,42 +91,49 @@ export default class Main extends Component {
   render() {
     const { newRepo, repositories, loading, error } = this.state;
     return (
-      <Container>
-        <h1>
-          <FaGithubAlt />
-          GitRepoHub
-        </h1>
-        <h2>Adicione um repositório</h2>
+      <>
+        <CurrentRoute>
+          <div>
+            <strong>Rota: </strong>/
+          </div>
+        </CurrentRoute>
+        <Container>
+          <h1>
+            <FaGithubAlt />
+            GitRepoHub
+          </h1>
+          <h2>Adicione um repositório</h2>
 
-        <Form onSubmit={this.handleSubmit} error={error}>
-          <input
-            type="text"
-            placeholder="Nome do repositório"
-            value={newRepo}
-            onChange={this.handleInputChange}
-          />
-          <SubmitButton type="submit" loading-data={loading}>
-            {loading ? (
-              <FaSpinner className="spinner" color="#FFF" />
-            ) : (
-              <FaPlus color="#FFF" />
-            )}
-          </SubmitButton>
-        </Form>
-        <List>
-          {repositories.map(repository => (
-            <li key={repository.name}>
-              <span>
-                <img src={repository.avatar} alt={repository.name} />{' '}
-                {repository.name}
-              </span>
-              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
-                Detalhes
-              </Link>
-            </li>
-          ))}
-        </List>
-      </Container>
+          <Form onSubmit={this.handleSubmit} error={error}>
+            <input
+              type="text"
+              placeholder="Nome do repositório"
+              value={newRepo}
+              onChange={this.handleInputChange}
+            />
+            <SubmitButton type="submit" loading-data={loading}>
+              {loading ? (
+                <FaSpinner className="spinner" color="#FFF" />
+              ) : (
+                <FaPlus color="#FFF" />
+              )}
+            </SubmitButton>
+          </Form>
+          <List>
+            {repositories.map(repository => (
+              <li key={repository.name}>
+                <span>
+                  <img src={repository.avatar} alt={repository.name} />{' '}
+                  {repository.name}
+                </span>
+                <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
+                  Detalhes
+                </Link>
+              </li>
+            ))}
+          </List>
+        </Container>
+      </>
     );
   }
 }

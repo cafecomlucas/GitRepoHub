@@ -26,8 +26,10 @@ export default createGlobalStyle`
     margin: 10px;
   }
 
+  body, html{ min-height: 101%;}
+
   body {
-    background: #3d9999;
+    background: #4d7999;
     -webkit-font-smoothing: antialiased !important;
   }
 

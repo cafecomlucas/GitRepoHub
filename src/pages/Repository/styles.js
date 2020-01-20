@@ -32,7 +32,7 @@ export const Owner = styled.header`
     text-align: center;
   }
   a {
-    color: #3d9999;
+    color: #4d7999;
     font-size: 16px;
     margin-bottom: 20px;
     padding: 10px;
@@ -172,7 +172,7 @@ export const IssueList = styled.ul`
           text-decoration: none;
           margin-right: 10px;
           &:hover {
-            color: #3d9999;
+            color: #4d7999;
             text-decoration: underline;
           }
         }
