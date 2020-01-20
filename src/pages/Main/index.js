@@ -68,6 +68,7 @@ export default class Main extends Component {
       // para ficar mais fácil de adicionar novos itens caso necessário
       const repository = {
         name: data.full_name,
+        avatar: data.owner.avatar_url,
       };
 
       this.setState({
@@ -114,7 +115,10 @@ export default class Main extends Component {
         <List>
           {repositories.map(repository => (
             <li key={repository.name}>
-              <span>{repository.name}</span>
+              <span>
+                <img src={repository.avatar} alt={repository.name} />{' '}
+                {repository.name}
+              </span>
               <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
                 Detalhes
               </Link>

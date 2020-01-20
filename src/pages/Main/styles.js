@@ -81,6 +81,7 @@ export const SubmitButton = styled.button.attrs(props => ({
 
   @media screen and (max-width: 480px) {
     margin: 10px 0 0 0;
+    max-width: 100%;
     flex: 1;
   }
 `;
@@ -95,6 +96,17 @@ export const List = styled.ul`
     flex-wrap: wrap;
     align-items: center;
     padding: 15px 0;
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+    img {
+      max-width: 32px;
+      max-height: 32px;
+      overflow: hidden;
+      margin-right: 10px;
+    }
 
     & + li {
       /** aplica em todas lis, menos na primeira */

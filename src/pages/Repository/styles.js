@@ -54,6 +54,7 @@ export const IssueFilter = styled.ul`
     margin: 0 0 30px 0;
     color: #777;
     text-align: center;
+    font-weight: bold;
   }
   div {
     display: flex;
