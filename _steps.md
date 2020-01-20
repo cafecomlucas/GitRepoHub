@@ -7,11 +7,11 @@ Utilizamos esse método em praticamente qualquer projeto que utilize ReactJS. S�
 Geramos um novo projeto através do comando `yarn create react-app`:
 
 ```bash
-yarn create react-app rocketseat_05_reactjs-github-api
+yarn create react-app GitRepoHub
 ```
 
 ```bash
-cd rocketseat_05_reactjs-github-api/
+cd GitRepoHub/
 ```
 
 O comando `start` foi gerado no `package.json`. Ao digitar `yarn start` o projeto já abre automaticamente no navegador exibindo o logo do React.
@@ -27,7 +27,7 @@ Após criação do projeto no site do GitHub, ele foi associado com a pasta loca
 ```bash
 git add .
 git commit -m "Inicializa projeto | Cria aplicação ReactJS"
-git remote add origin https://github.com/cafecomlucas/rocketseat_05_reactjs-github-api.git
+git remote add origin https://github.com/cafecomlucas/GitRepoHub.git
 git push -u origin master
 ```
 

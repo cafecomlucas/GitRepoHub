@@ -17,7 +17,7 @@ export const Owner = styled.header`
   img {
     width: 128px;
     height: 128px;
-    border-radius: 50%;
+    border-radius: 5%;
   }
   h1 {
     font-size: 28px;
@@ -32,7 +32,7 @@ export const Owner = styled.header`
     text-align: center;
   }
   a {
-    color: #7159c1;
+    color: #3d9999;
     font-size: 16px;
     margin-bottom: 20px;
     padding: 10px;
@@ -47,7 +47,7 @@ export const Owner = styled.header`
 
 export const IssueFilter = styled.ul`
   margin: 30px 0 30px 0;
-  padding-top: 30px;
+  padding-top: 0;
   border-top: 1px solid #b7b7b7;
   h2 {
     font-size: 18px;
@@ -85,6 +85,8 @@ export const ContainerIssuesList = styled.div`
   transition: none;
   transition: all 400ms ease-out;
   opacity: 1;
+
+  min-height: 440px;
   ${props =>
     props.loadingFilter &&
     css`
@@ -145,6 +147,7 @@ export const IssueList = styled.ul`
     }
     img {
       max-width: 48px;
+      min-width: 48px;
       max-height: 48px;
       width: 48px;
       height: 48px;
@@ -155,6 +158,7 @@ export const IssueList = styled.ul`
     div {
       flex: 1; /** para não passar da borda em telas muito pequenas (ativa o shrink 1) */
       margin-left: 15px;
+      overflow: hidden;
       p {
         margin-top: 5px;
         font-size: 12px;
@@ -167,7 +171,7 @@ export const IssueList = styled.ul`
           text-decoration: none;
           margin-right: 10px;
           &:hover {
-            color: #7159c1;
+            color: #3d9999;
             text-decoration: underline;
           }
         }

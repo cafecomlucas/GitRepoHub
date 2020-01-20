@@ -1,6 +1,6 @@
 # GitRepoHub
 
-Aplicação Front-End responsiva com ReactJS que consome API do GitHub. A aplicação adiciona, lista e exibe detalhes de cada repositório. Nos detalhes é possível ver as Issues organizadas por filtro e por página.
+Aplicação Front-End responsiva com ReactJS que consome REST API do GitHub. A aplicação adiciona, lista e exibe detalhes de cada repositório. Nos detalhes é possível ver as Issues organizadas por filtro e por página.
 
 Passo a passo documentado em: [https://github.com/cafecomlucas/GitRepoHub/blob/master/\_steps.md](https://github.com/cafecomlucas/GitRepoHub/blob/master/_steps.md)
 
@@ -47,9 +47,9 @@ yarn dev
 - Configuração do padrão de código (com EditorConfig, ESLint e Prettier);
 - Roteamento no Front-End através do React Router DOM;
 - Configuração das rotas `/` e `/repository`;
-- Estilização com Styled Components;
+- Estilização escopada com Styled Components;
 - Responsividade e utilização do Flexbox;
-- Busca de dados em API externa através de requisições assíncronas
+- Busca de dados em API externa através de requisições assíncronas;
 - Adição e listagem de repositórios no componente `Main` (rota `/`);
 - Captura de possíveis erros através do `try/catch` no componente `Main`;
 - Validação de dado no campo de adicionar repositório (se vazio, inexistente ou duplicado) e estilização do input em caso de erro;

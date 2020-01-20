@@ -92,21 +92,22 @@ export default class Main extends Component {
       <Container>
         <h1>
           <FaGithubAlt />
-          Repositórios
+          GitRepoHub
         </h1>
+        <h2>Adicione um repositório</h2>
 
         <Form onSubmit={this.handleSubmit} error={error}>
           <input
             type="text"
-            placeholder="Adicionar repositório"
+            placeholder="Nome do repositório"
             value={newRepo}
             onChange={this.handleInputChange}
           />
           <SubmitButton type="submit" loading-data={loading}>
             {loading ? (
-              <FaSpinner className="spinner" color="#FFF" size={14} />
+              <FaSpinner className="spinner" color="#FFF" />
             ) : (
-              <FaPlus color="#FFF" size={14} />
+              <FaPlus color="#FFF" />
             )}
           </SubmitButton>
         </Form>
