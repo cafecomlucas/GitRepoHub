@@ -12,31 +12,16 @@ Passo a passo documentado em: [https://github.com/cafecomlucas/GitRepoHub/blob/m
 
 ### Versão online
 
-Através do endereço [gitrepohub.herokuapp.com](https://gitrepohub.herokuapp.com/)
+Acesse o endereço [gitrepohub.herokuapp.com](https://gitrepohub.herokuapp.com/)
 
 ### Localmente
 
-- Clone este repositório:
+Clone este repositório, acesse o diretório, instale as dependências e inicie a aplicação:
 
 ```bash
-git clone [caminho_do_repositorio]
-```
-
-- Acesse o diretório criado:
-
-```bash
-cd [nome_do_repositorio]
-```
-
-- Instale as dependencias:
-
-```bash
+git clone https://github.com/cafecomlucas/GitRepoHub.git
+cd GitRepoHub/
 yarn
-```
-
-- Inicie a aplicação:
-
-```bash
 yarn dev
 ```
 
