@@ -4,7 +4,7 @@ Aplicação Front-End responsiva com ReactJS que consome REST API do GitHub. A a
 
 Passo a passo documentado em: [https://github.com/cafecomlucas/GitRepoHub/blob/master/\_steps.md](https://github.com/cafecomlucas/GitRepoHub/blob/master/_steps.md)
 
-![Demonstração - Busca na API do GitHub e testa responsividade](.github/reactjs-github-api_GIF.gif)
+![Demonstração - Busca na API do GitHub e testa responsividade](.github/reactjs-github-api-storage-repository.gif)
 
 ---
 

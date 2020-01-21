@@ -112,9 +112,7 @@ export default class Repository extends Component {
       return (
         <>
           <CurrentRoute>
-            <div>
-              <strong>Rota: </strong>/
-            </div>
+            <strong>Rota: </strong>/
           </CurrentRoute>
           <Loading>Carregando...</Loading>
         </>
@@ -123,10 +121,8 @@ export default class Repository extends Component {
     return (
       <>
         <CurrentRoute>
-          <div>
-            <strong>Rota: </strong>/repository/
-            {match.params.repository}
-          </div>
+          <strong>Rota: </strong>/repository/
+          {match.params.repository}
         </CurrentRoute>
         <Container>
           <Owner>

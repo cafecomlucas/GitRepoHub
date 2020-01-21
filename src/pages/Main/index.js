@@ -21,6 +21,8 @@ export default class Main extends Component {
     const repositories = JSON.parse(localStorage.getItem('repositories'));
 
     if (repositories) this.setState({ repositories });
+
+    this.inputNewRepo = document.querySelector('#inputNewRepo');
   }
 
   componentDidUpdate(_, prevState) {
@@ -85,6 +87,7 @@ export default class Main extends Component {
       this.setState({
         loading: false,
       });
+      this.inputNewRepo.focus();
     }
   };
 
@@ -93,9 +96,7 @@ export default class Main extends Component {
     return (
       <>
         <CurrentRoute>
-          <div>
-            <strong>Rota: </strong>/
-          </div>
+          <strong>Rota: </strong>/
         </CurrentRoute>
         <Container>
           <h1>
@@ -106,8 +107,9 @@ export default class Main extends Component {
 
           <Form onSubmit={this.handleSubmit} error={error}>
             <input
+              id="inputNewRepo"
               type="text"
-              placeholder="Nome do repositório"
+              placeholder="usuário/repositório"
               value={newRepo}
               onChange={this.handleInputChange}
             />

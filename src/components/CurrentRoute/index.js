@@ -10,16 +10,11 @@ const CurrentRoute = styled.div`
   color: #f7f7f7;
   font-size: 12px;
   line-height: 15px;
-  padding: 4px 10px;
+  padding: 6px 20px;
   min-width: 320px;
   margin: 0 auto;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   opacity: 0.9;
-  div {
-    width: 210px;
-    min-width: 210px;
-    margin: 0 auto;
-  }
 `;
 
 export default CurrentRoute;

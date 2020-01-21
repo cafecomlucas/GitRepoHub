@@ -58,18 +58,13 @@ export const SubmitButton = styled.button.attrs(props => ({
     font-size: 14px;
   }
 
-  &:hover {
-    background: #5092b3;
-    box-shadow: 0 0 2px 1px #466380;
-    svg {
-      font-size: 16px;
-    }
-  }
-  &:active {
-    background: #466380;
-    box-shadow: inset 0 0 2px 1px #fcfcfc;
-    svg {
-      font-size: 12px;
+  @media (hover: hover) {
+    &:hover {
+      background: #5092b3;
+      box-shadow: 0 0 2px 1px #466380;
+      svg {
+        font-size: 16px;
+      }
     }
   }
   &[disabled] {
@@ -78,7 +73,13 @@ export const SubmitButton = styled.button.attrs(props => ({
     background: #777777;
     opacity: 0.6;
   }
-
+  &:active {
+    background: #466380;
+    box-shadow: inset 0 0 2px 1px #fcfcfc;
+    svg {
+      font-size: 12px;
+    }
+  }
   @media screen and (max-width: 480px) {
     margin: 10px 0 0 0;
     max-width: 100%;
@@ -104,8 +105,11 @@ export const List = styled.ul`
     img {
       max-width: 32px;
       max-height: 32px;
+      min-height: 32px;
+      min-width: 32px;
       overflow: hidden;
       margin-right: 10px;
+      border-radius: 4px;
     }
 
     & + li {
