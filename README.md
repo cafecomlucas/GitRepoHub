@@ -12,7 +12,7 @@ Passo a passo documentado em: [https://github.com/cafecomlucas/GitRepoHub/blob/m
 
 ### Versão online
 
-Acesse o endereço [gitrepohub.herokuapp.com](https://gitrepohub.herokuapp.com/)
+Acesse o endereço [gitrepohub.vercel.app](https://gitrepohub.vercel.app/)
 
 ### Localmente
 
